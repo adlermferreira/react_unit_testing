@@ -3,30 +3,29 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 describe('App', () => {
-  it('should have the `th` "Items"', () => {
-    const wrapper = shallow(
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = shallow(
       <App />
     );
+  });
+
+  it('should have the `th` "Items"', () => {
     expect(
       wrapper.contains(<th>Items</th>)
     ).toBe(true);
   });
 
   it('should have a `button` element', () => {
-    const wrapper = shallow(
-      <App />
-    );
     expect(
       wrapper.containsMatchingElement(
-      <button>Add Item</button>
+      <button>Add item</button>
       )
     ).toBe(true);
   });
 
   it('should have an `input` element', () => {
-    const wrapper = shallow(
-      <App />
-    );
     expect(
       wrapper.containsMatchingElement(
       <input />
@@ -35,9 +34,6 @@ describe('App', () => {
   });
 
   it('`button` should be disabled', () => {
-    const wrapper = shallow(
-      <App />
-    );
     const button = wrapper.find('button').first();
     expect(
       button.props().disabled
